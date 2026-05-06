@@ -268,7 +268,7 @@ export default function Home() {
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(90);
+  const [timeLeft, setTimeLeft] = useState(60);
   
   // Stats & Auth States
   const [playCount, setPlayCount] = useState(0);
@@ -343,7 +343,7 @@ export default function Home() {
     setScore(0);
     setIsAnswered(false);
     setSelectedOption(null);
-    setTimeLeft(90);
+    setTimeLeft(60);
     setView('quiz');
   };
 
@@ -412,7 +412,7 @@ export default function Home() {
 
   const radius = 35;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (timeLeft / 90) * circumference;
+  const strokeDashoffset = circumference - (timeLeft / 60) * circumference;
 
   return (
     <div className="container">
