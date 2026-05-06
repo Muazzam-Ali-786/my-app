@@ -268,7 +268,7 @@ export default function Home() {
   const [score, setScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(90);
   
   // Stats & Auth States
   const [playCount, setPlayCount] = useState(0);
@@ -343,7 +343,7 @@ export default function Home() {
     setScore(0);
     setIsAnswered(false);
     setSelectedOption(null);
-    setTimeLeft(60);
+    setTimeLeft(90);
     setView('quiz');
   };
 
@@ -412,7 +412,7 @@ export default function Home() {
 
   const radius = 35;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (timeLeft / 60) * circumference;
+  const strokeDashoffset = circumference - (timeLeft / 90) * circumference;
 
   return (
     <div className="container">
@@ -444,7 +444,7 @@ export default function Home() {
       {view === 'categories' && (
         <section className="categories-view">
           <div className="view-header">
-            <span className="plus-deco">+</span>
+          
             <h1>Choose a Category</h1>
             <p>Pick a topic to start your quiz journey</p>
             {!isLoggedIn && (
@@ -456,6 +456,7 @@ export default function Home() {
               <div key={i} className="cat-card-landing" onClick={() => startQuiz(i)}>
                 <div className="cat-icon-landing" style={{ color: cat.color }}>{cat.icon}</div>
                 <div className="cat-name-landing">{cat.name}</div>
+                <div className="cat-desc-landing">10 Quizzes</div>
                 <div className="start-btn-mini">Start Quiz</div>
               </div>
             ))}
@@ -467,8 +468,8 @@ export default function Home() {
         <section className="quiz-view">
           <div className="quiz-header">
             <span className="quiz-category-tag">{categories[selectedCat].name}</span>
-            <div className={`timer-container ${timeLeft <= 10 ? 'urgent' : ''}`}>
-              <svg className="timer-svg">
+            <div className={`timer-container ${timeLeft <= 15 ? 'urgent' : ''}`}>
+              <svg className="timer-svg" viewBox="0 0 80 80">
                 <circle className="timer-bg" cx="40" cy="40" r="35" />
                 <circle className="timer-progress" cx="40" cy="40" r="35" style={{ strokeDasharray: circumference, strokeDashoffset: strokeDashoffset }} />
               </svg>

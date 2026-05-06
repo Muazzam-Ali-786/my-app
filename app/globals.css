@@ -173,9 +173,11 @@ body {
 
 .categories-grid-landing {
   display: grid;
-  grid-template-columns: repeat(4, 180px);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 2rem;
   justify-content: center;
+  max-width: 1000px;
+  width: 100%;
 }
 
 .cat-card-landing {
@@ -222,6 +224,13 @@ body {
   font-size: 1.1rem;
   color: #1f2937;
   margin-top: 0.5rem;
+}
+
+.cat-desc-landing {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 0.2rem;
 }
 
 .start-btn-mini {
@@ -276,8 +285,8 @@ body {
   left: 50%;
   top: -50px;
   transform: translateX(-50%);
-  width: 90px;
-  height: 90px;
+  width: clamp(70px, 10vw, 90px);
+  height: clamp(70px, 10vw, 90px);
   background: white;
   border-radius: 50%;
   display: flex;
@@ -288,8 +297,8 @@ body {
 
 .timer-svg {
   transform: rotate(-90deg);
-  width: 80px;
-  height: 80px;
+  width: 85%;
+  height: 85%;
 }
 
 .timer-bg {
@@ -308,7 +317,7 @@ body {
 
 .timer-text {
   position: absolute;
-  font-size: 1.4rem;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 900;
   color: #7c3aed;
 }
@@ -717,4 +726,186 @@ body {
 .logout-btn:hover {
   background: #fee2e2;
   transform: scale(1.05);
+}
+
+/* --- Responsive Media Queries --- */
+
+/* Tablet & Smaller Desktops (up to 1024px) */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+  
+  .categories-grid-landing {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile Devices (up to 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .navbar {
+    padding: 1rem 0;
+  }
+
+  .nav-links {
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    display: none;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+  }
+
+  .login-btn {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .hero {
+    height: auto;
+    min-height: calc(100vh - 80px);
+    padding: 3rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .view-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .categories-grid-landing {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .cat-card-landing {
+    width: 100%;
+    height: 180px;
+  }
+
+  .cat-icon-landing {
+    font-size: 2.5rem;
+  }
+
+  .quiz-view {
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .quiz-header {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+
+  .timer-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: clamp(55px, 18vw, 75px);
+    height: clamp(55px, 18vw, 75px);
+    margin: 0.5rem 0;
+    order: -1; /* Put timer at the top on mobile */
+  }
+
+  .timer-svg {
+    width: 90%;
+    height: 90%;
+  }
+
+  .timer-bg, .timer-progress {
+    stroke-width: 5;
+  }
+
+  .quiz-category-tag {
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .question-count {
+    font-size: 0.9rem;
+  }
+
+  .timer-text {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+  }
+
+  .progress-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .question-text {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .options-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .option-btn {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .result-title {
+    font-size: 1.8rem;
+  }
+
+  .score-number {
+    font-size: 3rem;
+  }
+
+  .action-btns {
+    flex-direction: column;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1.5rem;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+  }
+
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Very Small Devices (up to 380px) */
+@media (max-width: 380px) {
+  .categories-grid-landing {
+    grid-template-columns: 1fr;
+  }
 }
